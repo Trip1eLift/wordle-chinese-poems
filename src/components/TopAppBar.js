@@ -22,9 +22,9 @@ export default function TopAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" align="center" sx={{ flexGrow: 1 }}>
-            <div style={{cursor:"default"}}>Wordle Tang Poetry</div>
+            <div style={{cursor:"default"}}>Tangle: A Wordle game for Tang Poetry</div>
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Feedback</Button>
         </Toolbar>
       </AppBar>
     </Box>
