@@ -18,7 +18,7 @@ const style = {
 };
 
 export default function AnswerPopup({gameState, answer}) {
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [justOver, setJustOver] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);

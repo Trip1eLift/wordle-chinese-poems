@@ -1,3 +1,7 @@
 v1.0.0
 Title: Tangle: Contain basic functionality that provide 10 variant answer randomly for player to enjoy.
 Details: No feedback tab. No top-left options. Only support Chinese Traditional. Have 10 variants, and provide them randomly in uniform distribution. The answer is displayed in the console since the beginning. Basic result display.
+
+v1.0.1
+Title: Bug fixes, Add path of /Tangle
+Details: To do list: Expand word dataset, expand answer list, add Chinese simplified, cache result 1 day 1 game
