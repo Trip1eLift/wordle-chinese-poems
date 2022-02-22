@@ -1,8 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { Converter } from 'opencc-js';
+const converter = Converter({ from: 'tw', to: 'cn' });
 
-export default function Controller({progress, setProgress, gameState, setGameState, answer, forceUpdate}) {
+export default function Controller({progress, setProgress, gameState, setGameState, answer, forceUpdate, translate}) {
     
     const controlClickableStyle = {
         fontSize: "2rem",
@@ -48,12 +50,18 @@ export default function Controller({progress, setProgress, gameState, setGameSta
             forceUpdate();
         }
     }
+    let deleteText = "刪除";
+    let confirmText = "確定";
+    if (translate) {
+        deleteText = converter(deleteText);
+        confirmText = converter(confirmText);
+    }
 
     return (
         <Box sx={{ flexGrow: 1}} style={{marginBottom: "1rem"}}>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
-                <Grid item><div style={{...controlClickableStyle, backgroundColor:"#FF7F7F"}} onClick={handleDelete}>刪除</div></Grid>
-                <Grid item><div style={{...controlClickableStyle, backgroundColor:"#90EE90"}} onClick={handleSubmit}>確定</div></Grid>
+                <Grid item><div style={{...controlClickableStyle, backgroundColor:"#FF7F7F"}} onClick={handleDelete}>{deleteText}</div></Grid>
+                <Grid item><div style={{...controlClickableStyle, backgroundColor:"#90EE90"}} onClick={handleSubmit}>{confirmText}</div></Grid>
             </Grid>
         </Box>
     )

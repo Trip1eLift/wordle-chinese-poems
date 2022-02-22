@@ -3,8 +3,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { v4 as uuidv4 } from 'uuid';
 import progressColor from './progressColor';
+import { Converter } from 'opencc-js';
+const converter = Converter({ from: 'tw', to: 'cn' });
 
-export default function WordBank({wordPool, progress, setProgress, answer, gameState, forceUpdate}) {
+export default function WordBank({wordPool, progress, setProgress, answer, gameState, forceUpdate, translate}) {
     
     const wordClickableStyle = {
         fontSize: "2rem",
@@ -25,7 +27,7 @@ export default function WordBank({wordPool, progress, setProgress, answer, gameS
         if (progress.attempts[row].length >= 5)
             return;
         let tempProgress = progress;
-        progress.attempts[row] = progress.attempts[row] + event.target.innerText;
+        progress.attempts[row] = progress.attempts[row] + event.target.id;
         setProgress(tempProgress);
         forceUpdate();
     }
@@ -41,22 +43,28 @@ export default function WordBank({wordPool, progress, setProgress, answer, gameS
         sub3.push(wordPool[i]);
 
     const progColor = new progressColor(answer);
+    function trans(word) {
+        if (translate)
+            return converter(word);
+        else
+            return word;
+    }
 
     return (
         <Box sx={{ flexGrow: 1}} style={{marginTop: "1rem"}}>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
                 {sub1.map((word) => 
-                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord}>{word}</div></Grid>
+                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord} id={word}>{trans(word)}</div></Grid>
                 )}
             </Grid>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
                 {sub2.map((word) => 
-                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord}>{word}</div></Grid>
+                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord} id={word}>{trans(word)}</div></Grid>
                 )}
             </Grid>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
                 {sub3.map((word) => 
-                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord}>{word}</div></Grid>
+                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord} id={word}>{trans(word)}</div></Grid>
                 )}
             </Grid>
         </Box>
