@@ -4,6 +4,7 @@ import WordMatrix from './components/WordMatrix';
 import WordBank from './components/WordBank';
 import Controller from './components/Controller';
 import ShareBox from './components/ShareBox';
+import AnswerPopup from './components/AnswerPopup';
 import problenGenerator from './components/problemGenerator';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <WordBank wordPool={wordPool} progress={progress} setProgress={setProgress} answer={answer} forceUpdate={forceUpdate} gameState={gameState} />
       <Controller progress={progress} setProgress={setProgress} forceUpdate={forceUpdate} gameState={gameState} setGameState={setGameState} answer={answer} />
       <ShareBox gameState={gameState} answer={answer} progress={progress} output={outputMessage}/>
+      <AnswerPopup gameState={gameState} answer={answer}/>
     </div>
   );
 }

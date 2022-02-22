@@ -1,0 +1,3 @@
+v1.0.0
+Title: Contain basic functionality that provide 10 variant answer randomly for player to enjoy.
+Details: No feedback tab. No top-left options. Only support Chinese Traditional. Have 10 variants, and provide them randomly in uniform distribution. The answer is displayed in the console since the beginning. Basic result display.
