@@ -4,6 +4,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { v4 as uuidv4 } from 'uuid';
 import data from './five-character-quatrain.json';
+import { Converter } from 'opencc-js';
+const converter = Converter({ from: 'tw', to: 'cn' });
 
 const style = {
     position: 'absolute',
@@ -17,7 +19,7 @@ const style = {
     p: 4,
 };
 
-export default function AnswerPopup({gameState, answer}) {
+export default function AnswerPopup({gameState, answer, translate}) {
     const [open, setOpen] = React.useState(false);
     const [justOver, setJustOver] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -39,7 +41,14 @@ export default function AnswerPopup({gameState, answer}) {
         });
         return Poem;
     }
-    const Poem = locateAnswer(answer, data);
+    let Poem = locateAnswer(answer, data);
+    if (translate) {
+        Poem.title = converter(Poem.title);
+        Poem.author = converter(Poem.author);
+        for (let i=0;i<Poem.lyrics.length; i++) {
+            Poem.lyrics[i] = converter(Poem.lyrics[i]);
+        }
+    }
 
     return (
         <div>
