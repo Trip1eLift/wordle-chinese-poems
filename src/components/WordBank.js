@@ -2,8 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { v4 as uuidv4 } from 'uuid';
+import progressColor from './progressColor';
 
-export default function WordBank({wordPool, progress, setProgress, gameState, forceUpdate}) {
+export default function WordBank({wordPool, progress, setProgress, answer, gameState, forceUpdate}) {
     
     const wordClickableStyle = {
         fontSize: "2rem",
@@ -11,7 +12,6 @@ export default function WordBank({wordPool, progress, setProgress, gameState, fo
         paddingBottom: "0.6rem",
         paddingLeft: "1rem",
         paddingRight: "1rem",
-        backgroundColor:"lightgrey",
         borderRadius: "7px",
         cursor: "pointer"
     }
@@ -40,21 +40,23 @@ export default function WordBank({wordPool, progress, setProgress, gameState, fo
     for (let i = 20; i < 30; i++)
         sub3.push(wordPool[i]);
 
+    const progColor = new progressColor(answer);
+
     return (
         <Box sx={{ flexGrow: 1}} style={{marginTop: "1rem"}}>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
                 {sub1.map((word) => 
-                    <Grid item key={uuidv4()}><div style={wordClickableStyle} onClick={handleSelectWord}>{word}</div></Grid>
+                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord}>{word}</div></Grid>
                 )}
             </Grid>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
                 {sub2.map((word) => 
-                    <Grid item key={uuidv4()}><div style={wordClickableStyle} onClick={handleSelectWord}>{word}</div></Grid>
+                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord}>{word}</div></Grid>
                 )}
             </Grid>
             <Grid container justifyContent="center" spacing={1} marginTop="0.2rem">
                 {sub3.map((word) => 
-                    <Grid item key={uuidv4()}><div style={wordClickableStyle} onClick={handleSelectWord}>{word}</div></Grid>
+                    <Grid item key={uuidv4()}><div style={{...wordClickableStyle, backgroundColor: progColor.getBacktrackColor(word, progress)}} onClick={handleSelectWord}>{word}</div></Grid>
                 )}
             </Grid>
         </Box>

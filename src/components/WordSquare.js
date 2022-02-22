@@ -1,7 +1,6 @@
-export default function WordSquare({column, attempt, answer, currentRow, progressRow}) {
-    const yellow = "#C9B458";
-    const green = "#6AAA64";
+import progressColor from './progressColor';
 
+export default function WordSquare({column, attempt, answer, currentRow, progressRow}) {
     let squareStyle = {
         fontSize: "4rem",
         paddingTop: "0",
@@ -23,19 +22,8 @@ export default function WordSquare({column, attempt, answer, currentRow, progres
     }
     if (progressRow > currentRow) {
         // Give hint
-        if (word === answer[column])
-            squareStyle['backgroundColor'] = green;
-        else {
-            let hit = false;
-            for (let i = 0; i < 5; i++) {
-                if (answer[i] === word)
-                    hit = true;
-            }
-            if (hit)
-                squareStyle['backgroundColor'] = yellow;
-            else
-                squareStyle['backgroundColor'] = "lightgrey";
-        }
+        const progColor = new progressColor(answer);
+        squareStyle['backgroundColor'] = progColor.getColor(word, column);
     }
 
     return <div style={squareStyle}>{word}</div>;

@@ -39,7 +39,7 @@ export default function Controller({progress, setProgress, gameState, setGameSta
                 nextState = "win";
             else if (row === 5)
                 nextState = "lose";
-            console.log(nextState);
+            //console.log(nextState);
             setGameState(nextState);
             
             let tempProgress = progress;
