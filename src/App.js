@@ -6,9 +6,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/tangle" element={<TangleApp />} />
+      <Route path="/tangle/" element={<TangleApp />} />
 
-      <Route path="/" element={<Navigate to="/tangle" />} />
+      <Route path="/" element={<Navigate to="/tangle/" />} />
     </Routes>
   );
 }

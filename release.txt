@@ -5,3 +5,7 @@ Details: No feedback tab. No top-left options. Only support Chinese Traditional.
 v1.0.1
 Title: Bug fixes, Add path of /Tangle, turn website into my personal static website (not just tangle)
 Details: To do list: Expand word dataset, expand answer list, add Chinese simplified, cache result 1 day 1 game, add personal portfolio.
+
+v1.0.2
+Title: Separate tangle from homepath
+Details: same as above
