@@ -3,10 +3,20 @@ import data from './five-character-quatrain.json';
 
 export default class problemGenerator {
     constructor(seed) {
-        const answer = this.manualAnswers(seed);
+        this.seed = seed;
+        const answer = this.manualAnswers(this.seed);
         let wordPool = this.associationWordPooling(answer);
         wordPool = this.shuffleWordPool(wordPool);
-        return [answer, wordPool];
+        this.answer = answer;
+        this.wordPool = wordPool;
+    }
+
+    getInit() {
+        return [this.answer, this.wordPool];
+    }
+
+    getSeed() {
+        return this.seed;
     }
 
     shuffleWordPool(wordPool) {

@@ -11,11 +11,10 @@ function App() {
 
   const [progress, setProgress] = React.useState({row: 0, attempts: ["", "", "", "", "", ""]});
   const [gameState, setGameState] = React.useState("ongoing"); // ongoing, win, lose
-  const seed = Math.floor(Math.random() * 10);
-  const [problemGeneratorStatic, ] = React.useState(new problenGenerator(seed));
+  const [problemGeneratorStatic, ] = React.useState(new problenGenerator(Math.floor(Math.random() * 10)));
   //const wordPool = "寥落古行宮宮花寂寞紅白頭宮女在閒坐說玄宗白日依山盡黃河入海流";
   //const answer = "寥落古行宮";
-  const [answer, wordPool] = problemGeneratorStatic;
+  const [answer, wordPool] = problemGeneratorStatic.getInit();
   React.useEffect(() => {
     // Only for beta debugging
     console.log(answer);
@@ -25,7 +24,7 @@ function App() {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
-  const outputMessage = "Tangle beta, seed: " + seed.toString();
+  const outputMessage = "Tangle (beta), v" + problemGeneratorStatic.getSeed().toString();
   return (
     <div>
       <TopAppBar />

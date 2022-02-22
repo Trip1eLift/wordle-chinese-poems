@@ -29,6 +29,12 @@ export default class progressColor {
             }
             result.push(rowResult);
         }
+        let performance = result.length - 1;
+        if (performance === 6 && this.answer !== progress.attempts[5])
+            performance = "X";
+        else
+            performance = performance.toString();
+        result[0] = result[0] + " " + performance + "/6";
         return result;
     }
     

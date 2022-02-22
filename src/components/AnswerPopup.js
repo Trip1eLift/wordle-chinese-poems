@@ -18,7 +18,7 @@ const style = {
 };
 
 export default function AnswerPopup({gameState, answer}) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const [justOver, setJustOver] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -53,8 +53,7 @@ export default function AnswerPopup({gameState, answer}) {
             <Typography id="modal-modal-title" variant="h6" component="h2">
                 {"答案: " + answer}
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <div style={{marginBottom:"0.5rem"}}>
+                <div style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
                     <span>{Poem.title}</span>
                     <span>&ensp;&ensp;</span>
                     <span>{Poem.author}</span>
@@ -62,7 +61,6 @@ export default function AnswerPopup({gameState, answer}) {
                 {Poem.lyrics.map((line) => 
                     <div key={uuidv4()}>{line}</div>
                 )}
-            </Typography>
             </Box>
         </Modal>
         </div>
