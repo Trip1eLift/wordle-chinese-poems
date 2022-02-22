@@ -8,4 +8,4 @@ Details: To do list: Expand word dataset, expand answer list, add Chinese simpli
 
 v1.0.2
 Title: Separate tangle from homepath
-Details: same as above
+Details: same as previous, but remove any routing.
