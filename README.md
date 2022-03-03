@@ -6,6 +6,3 @@ Demo: ![image](https://user-images.githubusercontent.com/43707388/156493083-53ff
 Website is published on aws: https://tangle.trip1elift.com/
 
 Utilizing: Route53, Certs, CloudFront, S3
-
-### Deployment tutorial
-https://www.youtube.com/watch?v=mls8tiiI3uc
