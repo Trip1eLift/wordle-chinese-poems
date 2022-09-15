@@ -31,7 +31,7 @@ export default function AnswerPopup({gameState, answer, translate}) {
     }
 
     function locateAnswer(answer, data) {
-        let Poem;
+        let Poem = {title: "", author: "", lyrics: ["", "", "", ""]};
         data.forEach((poem) => {
             poem.lyrics.forEach((line) => {
                 if (answer === line) {

@@ -1,3 +1,4 @@
+import React from 'react';
 import progressColor from './progressColor';
 import { Converter } from 'opencc-js';
 const converter = Converter({ from: 'tw', to: 'cn' });

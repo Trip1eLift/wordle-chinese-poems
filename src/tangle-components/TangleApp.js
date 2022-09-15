@@ -27,7 +27,7 @@ export default function TangleApp() {
   const outputMessage = "Tangle (beta), v" + problemGeneratorStatic.getSeed().toString();
   return (
     <div>
-      <TopAppBar translate={translate} setTranslate={setTranslate} />
+      <TopAppBar translate={translate} setTranslate={setTranslate} forceUpdate={forceUpdate} />
       <WordMatrix progress={progress} answer={answer} translate={translate} />
       <WordBank wordPool={wordPool} progress={progress} setProgress={setProgress} answer={answer} forceUpdate={forceUpdate} gameState={gameState} translate={translate}/>
       <Controller progress={progress} setProgress={setProgress} forceUpdate={forceUpdate} gameState={gameState} setGameState={setGameState} answer={answer} translate={translate}/>
