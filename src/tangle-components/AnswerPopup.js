@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { v4 as uuidv4 } from 'uuid';
-import data from './five-character-quatrain.json';
+import data from './5word4line.json';
 import { Converter } from 'opencc-js';
 const converter = Converter({ from: 'tw', to: 'cn' });
 

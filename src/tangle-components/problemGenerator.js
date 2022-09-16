@@ -1,5 +1,4 @@
-import data from './five-character-quatrain.json';
-//const data = require("./five-character-quatrain.json");
+import data from './5word4line.json';
 
 export default class problemGenerator {
     constructor(seed) {
