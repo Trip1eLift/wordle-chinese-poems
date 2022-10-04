@@ -6,8 +6,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import About from './About';
 
 export default function TopAppBar({translate, setTranslate}) {
+  const [about, setAbout] = React.useState(true);
+
   function handleLanguage(event) {
     setTranslate(translate === false);
   }
@@ -34,7 +37,8 @@ export default function TopAppBar({translate, setTranslate}) {
             <div style={{cursor:"default"}}>Tangle: A Wordle game for Tang Poetry</div>
           </Typography>
           <Button color="inherit" onClick={handleLanguage}>{languageInnerText()}</Button>
-          <Button color="inherit">About</Button>
+          <Button color="inherit" onClick={(e)=>setAbout(true)}>About</Button>
+          <About open={about} setOpen={setAbout} />
         </Toolbar>
       </AppBar>
     </Box>

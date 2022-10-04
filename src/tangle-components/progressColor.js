@@ -12,7 +12,6 @@ export default class progressColor {
 
     resultDisplay(progress, output) {
         let result = [output];
-        const answer = this.answer;
         for (let row = 0; row < 6; row++) {
             let rowResult = "";
             if (progress.attempts[row] === "")

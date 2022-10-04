@@ -8,9 +8,9 @@ export default function ShareBox({gameState, answer, progress, output}) {
     if (gameState === "ongoing")
         return (<></>);
 
-    const greenChar = "🟩";
-    const yelloChar = "🟨";
-    const blackChar = "⬛";
+    // const greenChar = "🟩";
+    // const yelloChar = "🟨";
+    // const blackChar = "⬛";
 
     //const progress = {attempts: ["寥落古行宮", "寥落古行宮", "寥落古行宮", "寥落古行宮", "寥落古行宮", "寥落古行宮"]};
 
