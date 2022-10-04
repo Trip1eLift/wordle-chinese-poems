@@ -9,7 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import About from './About';
 
 export default function TopAppBar({translate, setTranslate}) {
-  const [about, setAbout] = React.useState(true);
+  const [about, setAbout] = React.useState(false);
 
   function handleLanguage(event) {
     setTranslate(translate === false);
