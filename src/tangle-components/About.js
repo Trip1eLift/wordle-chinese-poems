@@ -1,20 +1,16 @@
-import * as React from 'react';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import { marked } from 'marked';
-import axios from 'axios';
+/**
+ * This is a react component meant to pull display About from the 
+ * readme as a JSX Modal.
+ * 
+ * Module requirements:
+ * 1. React
+ * 2. marked
+ * 
+ * Author: Joseph Chang
+ */
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  overflow:'scroll',
-  transform: 'translate(-50%, -40%)',
-  width: '60%',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  p: 4,
-};
+import * as React from 'react';
+import { marked } from 'marked';
 
 export default function About({open, setOpen}) {
   const [aboutText, setAboutText] = React.useState("");
@@ -23,26 +19,48 @@ export default function About({open, setOpen}) {
   }
 
   React.useEffect(() => {
-    if (localStorage.getItem("about"))
-      setAboutText(localStorage.getItem("about"));
-    axios.get("https://raw.githubusercontent.com/Trip1eLift/About/main/README.md")
-      .then((res) => {
-        setAboutText(res.data);
-        localStorage.setItem("about", res.data);
-      })
+    fetch("https://raw.githubusercontent.com/Trip1eLift/About/main/README.md")
+      .then(async (response) => {
+        const data = await response.text();
+        console.log(data);
+        setAboutText(data);
+      });
   }, []);
 
+  const style = {
+    visibility: open ? "visible" : "hidden",
+    position: 'absolute',
+    backgroundColor: "white",
+    color: "black",
+    top: "5vh",
+    height: "80vh",
+    left: "5%",
+    width: "80%",
+    overflow: "scroll",
+    zIndex: "2",
+    padding: "5%",
+    paddingTop: "5vh",
+    paddingBottom: "5vh",
+    margin: "0",
+    border: '2px solid #000',
+  }
+
+  const filterStyle = {
+    visibility: open ? "visible" : "hidden",
+    position: 'fixed',
+    backgroundColor: "black",
+    left: "0",
+    top: "0",
+    width: "100vw",
+    height: "100vh",
+    opacity: "0.7",
+    zIndex: "1"
+  }
+
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="about-modal-title"
-      aria-describedby="about-modal-description"
-      style={{overflow: "scroll"}}
-    >
-      <Box sx={style}>
-        <div dangerouslySetInnerHTML={{ __html: marked.parse(aboutText) }} />
-      </Box>
-    </Modal>
+    <>
+      <div style={filterStyle} onClick={handleClose}></div>
+      <div style={style} onClick={handleClose} dangerouslySetInnerHTML={{ __html: marked.parse(aboutText) }} />
+    </>  
   );
 }
